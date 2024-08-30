@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import TextField from "../components/TextField.jsx";
 import { useNavigate } from "react-router-dom";
-import FlexColumn from "../components/FlexColumn.jsx";
-import LoginBox from "../components/LoginBox.jsx";
+import FlexColumn from "../components/layout/FlexColumn.jsx";
+import LoginBox from "../components/layout/LoginBox.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 
 const SignUp = () => {

@@ -1,8 +1,7 @@
 import { Box, Card, Stack, Typography, useTheme } from "@mui/material";
-import Logo from "./Logo.jsx";
+import Logo from "../Logo.jsx";
 
 const LoginBox = ({ title, children }) => {
-  const theme = useTheme();
   return (
     <Stack
       sx={{

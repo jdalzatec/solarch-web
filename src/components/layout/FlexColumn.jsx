@@ -8,6 +8,7 @@ const FlexColumn = ({ ...props }) => {
         display: "flex",
         flexDirection: "column",
         gap: 2,
+        ...props.sx,
       }}
     />
   );

@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "../theme.js";
+import NewQuote from "./pages/NewQuote.jsx";
 
 function App() {
   return (
@@ -17,8 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          {/*<Route path="/change-temporary-password" element={<ChangeTemporaryPassword />} />*/}
-          {/*<Route path="/change-password" element={<ChangePassword />} />*/}
+          <Route path="/new-quote" element={<NewQuote />} />
           <Route path="/404" element={<ErrorPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

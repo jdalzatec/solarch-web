@@ -6,7 +6,6 @@ import {
 import React from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-// eslint-disable-next-line react/display-name
 const PasswordField = React.forwardRef((props, ref) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -35,5 +34,7 @@ const PasswordField = React.forwardRef((props, ref) => {
     />
   );
 });
+
+PasswordField.displayName = "PasswordField";
 
 export default PasswordField;
