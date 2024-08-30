@@ -1,20 +1,17 @@
 import useNewQuoteStore from "../../stores/newQuoteStore.js";
-import {
-  Slider,
-  Step,
-  StepContent,
-  StepLabel,
-  Typography,
-} from "@mui/material";
+import { Slider, Step, StepContent, Typography } from "@mui/material";
 import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
 import SecondaryButton from "../SecondaryButton.jsx";
+import StepLabel from "./StepLabel.jsx";
 
 const MAX_NUMBER_OF_ROOFS = 4;
 const AskForNumOfRoofsStep = ({ ...props }) => {
   const stepLabel = "Number of roofs";
   const stepDescription = `The number of roofs is the number of roofs of a building.`;
+
+  const numberOfFacades = useNewQuoteStore((state) => state.numberOfFacades);
 
   const numberOfRoofs = useNewQuoteStore((state) => state.numberOfRoofs);
   const setNumberOfRoofs = useNewQuoteStore((state) => state.setNumberOfRoofs);
@@ -31,7 +28,7 @@ const AskForNumOfRoofsStep = ({ ...props }) => {
 
   return (
     <Step {...props}>
-      <StepLabel>{stepLabel}</StepLabel>
+      <StepLabel label={stepLabel} step={2 + numberOfFacades + 1} />
       <StepContent>
         <Typography>{stepDescription}</Typography>
 

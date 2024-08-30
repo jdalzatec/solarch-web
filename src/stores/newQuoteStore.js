@@ -2,13 +2,24 @@ import { create } from "zustand";
 
 const useNewQuoteStore = create((set, get) => {
   return {
-    location: "",
-    setLocation: (location) => {
+    city: "",
+    setCity: (city) => {
       set({
-        location,
+        city,
+      });
+    },
+    country: "",
+    setCountry: (country) => {
+      set({
+        country,
       });
     },
     activeStep: 0,
+    setActiveStep: (activeStep) => {
+      set({
+        activeStep,
+      });
+    },
     nextStep: () => {
       set((state) => ({ activeStep: state.activeStep + 1 }));
     },
@@ -32,7 +43,8 @@ const useNewQuoteStore = create((set, get) => {
         facadesData: {},
         numberOfRoofs: 1,
         roofsData: {},
-        location: "",
+        city: "",
+        country: "",
       });
     },
     getLastStepIndex: () => {

@@ -1,10 +1,11 @@
-import { Stack, Step, StepContent, StepLabel, Typography } from "@mui/material";
+import { Stack, Step, StepContent, Typography } from "@mui/material";
 import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import TextField from "../TextField.jsx";
 import useNewQuoteStore from "../../stores/newQuoteStore.js";
 import SecondaryButton from "../SecondaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
+import StepLabel from "./StepLabel.jsx";
 
 const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
   const stepLabel = `Enter facade ${facadeIndex + 1} info`;
@@ -23,7 +24,7 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
 
   return (
     <Step {...props}>
-      <StepLabel>{stepLabel}</StepLabel>
+      <StepLabel label={stepLabel} step={2 + facadeIndex} />
       <StepContent>
         <Typography>{stepDescription}</Typography>
 

@@ -1,14 +1,17 @@
-import { Stack, Step, StepContent, StepLabel, Typography } from "@mui/material";
+import { Stack, Step, StepContent, Typography } from "@mui/material";
 import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import TextField from "../TextField.jsx";
 import useNewQuoteStore from "../../stores/newQuoteStore.js";
 import SecondaryButton from "../SecondaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
+import StepLabel from "./StepLabel.jsx";
 
 const AskForRoofInfo = ({ roofIndex, ...props }) => {
   const stepLabel = `Enter roof ${roofIndex + 1} info`;
   const stepDescription = `Enter the information of roof ${roofIndex + 1}.`;
+
+  const numberOfFacades = useNewQuoteStore((state) => state.numberOfFacades);
 
   const nextStep = useNewQuoteStore((state) => state.nextStep);
   const prevStep = useNewQuoteStore((state) => state.prevStep);
@@ -23,7 +26,7 @@ const AskForRoofInfo = ({ roofIndex, ...props }) => {
 
   return (
     <Step {...props}>
-      <StepLabel>{stepLabel}</StepLabel>
+      <StepLabel label={stepLabel} step={2 + numberOfFacades + 1 + roofIndex} />
       <StepContent>
         <Typography>{stepDescription}</Typography>
 

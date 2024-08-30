@@ -1,15 +1,10 @@
 import useNewQuoteStore from "../../stores/newQuoteStore.js";
-import {
-  Slider,
-  Step,
-  StepContent,
-  StepLabel,
-  Typography,
-} from "@mui/material";
+import { Box, Slider, Step, StepContent, Typography } from "@mui/material";
 import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
 import SecondaryButton from "../SecondaryButton.jsx";
+import StepLabel from "./StepLabel.jsx";
 
 const MAX_NUMBER_OF_FACADES = 8;
 const AskForNumOfFacadesStep = ({ ...props }) => {
@@ -33,7 +28,7 @@ const AskForNumOfFacadesStep = ({ ...props }) => {
 
   return (
     <Step {...props}>
-      <StepLabel>{stepLabel}</StepLabel>
+      <StepLabel label={stepLabel} step={1} />
       <StepContent>
         <Typography>{stepDescription}</Typography>
 
