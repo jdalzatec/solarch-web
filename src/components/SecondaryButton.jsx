@@ -1,7 +1,7 @@
-import { Button } from "@radix-ui/themes";
+import { Button } from "@mui/material";
 
 const SecondaryButton = ({ ...props }) => {
-  return <Button size="3" variant="surface" color="crimson" {...props} />;
+  return <Button variant="outlined" color="secondary" fullWidth {...props} />;
 };
 
 export default SecondaryButton;

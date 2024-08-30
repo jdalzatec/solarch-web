@@ -1,7 +1,7 @@
-import { Button } from "@radix-ui/themes";
+import { Button } from "@mui/material";
 
 const PrimaryButton = ({ ...props }) => {
-  return <Button size="3" {...props} />;
+  return <Button variant="contained" fullWidth {...props} />;
 };
 
 export default PrimaryButton;
