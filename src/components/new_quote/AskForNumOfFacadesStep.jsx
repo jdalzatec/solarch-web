@@ -1,5 +1,5 @@
 import useNewQuoteStore from "../../stores/newQuoteStore.js";
-import { Box, Slider, Step, StepContent, Typography } from "@mui/material";
+import { Slider, Step, StepContent, Typography } from "@mui/material";
 import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";

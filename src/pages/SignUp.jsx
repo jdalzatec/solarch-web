@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FlexColumn from "../components/layout/FlexColumn.jsx";
 import LoginBox from "../components/layout/LoginBox.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
+import FlexRow from "../components/layout/FlexRow.jsx";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -25,10 +26,12 @@ const SignUp = () => {
             {...register("email", { required: true })}
             type="email"
           />
-          <PrimaryButton type="submit">Sign up</PrimaryButton>
-          <SecondaryButton onClick={() => navigate("/login")}>
-            Cancel
-          </SecondaryButton>
+          <FlexRow>
+            <PrimaryButton type="submit">Sign up</PrimaryButton>
+            <SecondaryButton onClick={() => navigate("/login")}>
+              Cancel
+            </SecondaryButton>
+          </FlexRow>
         </FlexColumn>
       </form>
     </LoginBox>

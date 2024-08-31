@@ -17,9 +17,6 @@ const AskForLocationStep = ({ ...props }) => {
   const setCountry = useNewQuoteStore((state) => state.setCountry);
   const nextStep = useNewQuoteStore((state) => state.nextStep);
 
-  const activeStep = useNewQuoteStore((state) => state.activeStep);
-  const setActiveStep = useNewQuoteStore((state) => state.setActiveStep);
-
   const {
     register,
     handleSubmit,
@@ -28,7 +25,9 @@ const AskForLocationStep = ({ ...props }) => {
     defaultValues: { city, country },
   });
 
-  const handleNext = () => {
+  const handleNext = (data) => {
+    setCity(data.city);
+    setCountry(data.country);
     nextStep();
   };
 

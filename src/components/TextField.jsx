@@ -1,6 +1,7 @@
-import { IconButton, TextField as MUITextField, Tooltip } from "@mui/material";
+import { TextField as MUITextField, Tooltip } from "@mui/material";
 import React from "react";
 import InfoIcon from "@mui/icons-material/Info";
+import { baseOverrides } from "../../theme.js";
 
 const TextField = React.forwardRef((props, ref) => {
   return (
@@ -11,18 +12,11 @@ const TextField = React.forwardRef((props, ref) => {
       ref={ref}
       {...props}
       error={!!props.error}
-      sx={{
-        "& .Mui-focused": {
-          borderRadius: "1px",
-        },
-        "& .MuiFormLabel-colorPrimary": {
-          color: "rgba(0, 0, 0, 0.6)",
-        },
-      }}
+      sx={baseOverrides}
       slotProps={{
         input: {
           endAdornment: !!props.error && (
-            <Tooltip title={props.error.message}>
+            <Tooltip title={props.error}>
               <InfoIcon color="error" />
             </Tooltip>
           ),

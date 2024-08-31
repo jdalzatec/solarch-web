@@ -7,6 +7,7 @@ import LoginBox from "../components/layout/LoginBox.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 import { useState } from "react";
 import PasswordField from "../components/PasswordField.jsx";
+import FlexRow from "../components/layout/FlexRow.jsx";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -15,8 +16,6 @@ const ResetPassword = () => {
 
   const onSendCode = (data) => {
     setStage("reset_password");
-    console.log(data);
-    console.log(stage);
     unregister("email");
   };
 
@@ -34,10 +33,12 @@ const ResetPassword = () => {
               {...register("email", { required: true })}
               type="email"
             />
-            <PrimaryButton type="submit">Send code</PrimaryButton>
-            <SecondaryButton onClick={() => navigate("/login")}>
-              Cancel
-            </SecondaryButton>
+            <FlexRow>
+              <PrimaryButton type="submit">Send code</PrimaryButton>
+              <SecondaryButton onClick={() => navigate("/login")}>
+                Cancel
+              </SecondaryButton>
+            </FlexRow>
           </FlexColumn>
         </form>
       )}
@@ -56,10 +57,12 @@ const ResetPassword = () => {
               label="Confirm password"
               {...register("confirm_password", { required: true })}
             />
-            <PrimaryButton type="submit">Change password</PrimaryButton>
-            <SecondaryButton onClick={() => navigate("/login")}>
-              Cancel
-            </SecondaryButton>
+            <FlexRow>
+              <PrimaryButton type="submit">Change password</PrimaryButton>
+              <SecondaryButton onClick={() => navigate("/login")}>
+                Cancel
+              </SecondaryButton>
+            </FlexRow>
           </FlexColumn>
         </form>
       )}

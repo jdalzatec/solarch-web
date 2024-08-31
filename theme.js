@@ -67,3 +67,9 @@ export const theme = createTheme({
     },
   },
 });
+
+export const baseOverrides = {
+  "& .Mui-focused": {
+    borderRadius: "1px",
+  },
+};

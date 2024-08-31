@@ -27,15 +27,22 @@ const useNewQuoteStore = create((set, get) => {
       set((state) => ({ activeStep: state.activeStep - 1 }));
     },
     numberOfFacades: 4,
-    facadesData: {},
     setNumberOfFacades: (numberOfFacades) => {
       set({ numberOfFacades });
     },
+    facadesData: {},
+    setFacadeData: (facadeIndex, data) => {
+      set((state) => {
+        const facadesData = { ...state.facadesData };
+        facadesData[facadeIndex] = data;
+        return { facadesData };
+      });
+    },
     numberOfRoofs: 1,
-    roofsData: {},
     setNumberOfRoofs: (numberOfRoofs) => {
       set({ numberOfRoofs });
     },
+    roofsData: {},
     reset: () => {
       set({
         activeStep: 0,
