@@ -75,6 +75,7 @@ const AskForRoofInfo = ({ roofIndex, ...props }) => {
                 label="Width"
                 {...register("width")}
                 error={errors.width}
+                autoFocus
               />
               <TextField
                 label="Height"

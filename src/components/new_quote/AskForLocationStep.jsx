@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import StepLabel from "./StepLabel.jsx";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 
 const SCHEMA = yup
   .object({
@@ -30,10 +31,15 @@ const AskForLocationStep = ({ ...props }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: { city, country },
     resolver: yupResolver(SCHEMA),
   });
+
+  useEffect(() => {
+    reset({ city, country });
+  }, [city, country, reset]);
 
   const handleNext = (data) => {
     setCity(data.city);
@@ -63,6 +69,7 @@ const AskForLocationStep = ({ ...props }) => {
                 label="City"
                 {...register("city")}
                 error={errors.city}
+                autoFocus
               />
               <TextField
                 label="Country"

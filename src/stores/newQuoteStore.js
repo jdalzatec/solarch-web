@@ -2,13 +2,13 @@ import { create } from "zustand";
 
 const useNewQuoteStore = create((set, get) => {
   return {
-    city: "MANIZALES",
+    city: "",
     setCity: (city) => {
       set({
         city,
       });
     },
-    country: "COLOMBIA",
+    country: "",
     setCountry: (country) => {
       set({
         country,
@@ -48,17 +48,6 @@ const useNewQuoteStore = create((set, get) => {
         const roofsData = { ...state.roofsData };
         roofsData[roofIndex] = data;
         return { roofsData };
-      });
-    },
-    reset: () => {
-      set({
-        activeStep: 0,
-        numberOfFacades: 4,
-        facadesData: {},
-        numberOfRoofs: 1,
-        roofsData: {},
-        city: "",
-        country: "",
       });
     },
     getLastStepIndex: () => {

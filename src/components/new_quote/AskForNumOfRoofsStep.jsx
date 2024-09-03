@@ -28,7 +28,7 @@ const AskForNumOfRoofsStep = ({ ...props }) => {
 
   return (
     <Step {...props}>
-      <StepLabel label={stepLabel} step={2 + numberOfFacades + 1} />
+      <StepLabel label={stepLabel} step={2 + numberOfFacades} />
       <StepContent>
         <Typography>{stepDescription}</Typography>
 

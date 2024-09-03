@@ -65,6 +65,22 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderColor: "#ebebeb",
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          "&:last-child td, &:last-child th": {
+            borderColor: "#222",
+          },
+        },
+      },
+    },
   },
 });
 

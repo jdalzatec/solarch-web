@@ -10,6 +10,7 @@ import Select from "../Select.jsx";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 
 const MATERIAL_OPTIONS = [
   {
@@ -102,6 +103,7 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
                 label="Width"
                 {...register("width")}
                 error={errors.width}
+                autoFocus
               />
               <TextField
                 label="Height"
