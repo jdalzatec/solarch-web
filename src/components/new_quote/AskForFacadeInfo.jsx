@@ -7,22 +7,18 @@ import SecondaryButton from "../SecondaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
 import StepLabel from "./StepLabel.jsx";
 import Select from "../Select.jsx";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const MATERIAL_OPTIONS = [
   {
-    label: "Material 1",
-    value: "material1",
+    label: "Standard",
+    value: "standard",
   },
   {
-    label: "Material 2",
-    value: "material2",
-  },
-  {
-    label: "Material 3",
-    value: "material3",
+    label: "Thin Film",
+    value: "thin_film",
   },
 ];
 
@@ -30,20 +26,32 @@ const DEFAULT_MATERIAL_FACADE = MATERIAL_OPTIONS[0].value;
 
 const SCHEMA = yup
   .object({
-    width: yup.number().positive().required(),
-    height: yup.number().positive().required(),
-    tilt: yup.number().positive().required().min(0).max(90),
-    azimuth: yup.number().positive().required().min(0).max(360),
+    width: yup
+      .number()
+      .typeError("Width must be a number")
+      .positive("Width must be a positive number")
+      .required("Width is required"),
+    height: yup
+      .number()
+      .typeError("Height must be a number")
+      .positive("Height must be a positive number")
+      .required("Height is required"),
+    tilt: yup
+      .number()
+      .typeError("Tilt must be a number")
+      .positive("Tilt must be a positive number")
+      .required("Tilt is required")
+      .min(0, "Min. value is 0")
+      .max(90, "Max. value is 90"),
+    azimuth: yup
+      .number()
+      .typeError("Azimuth must be a number")
+      .positive("Azimuth must be a positive number")
+      .required("Azimuth is required")
+      .min(0, "Min. value is 0")
+      .max(360, "Max. value is 360"),
   })
   .required();
-
-const ERRORS = {
-  width: "Width is required and must be a positive number",
-  height: "Height is required and must be a positive number",
-  tilt: "Tilt is required and must be a positive number between 0 and 90",
-  azimuth:
-    "Azimuth is required and must be a positive number between 0 and 360",
-};
 
 const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
   const stepLabel = `Enter facade ${facadeIndex + 1} info`;
@@ -52,19 +60,19 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
   const nextStep = useNewQuoteStore((state) => state.nextStep);
   const prevStep = useNewQuoteStore((state) => state.prevStep);
 
-  const data = useNewQuoteStore((state) => state.facadesData[facadeIndex]);
   const setFacadeData = useNewQuoteStore((state) => state.setFacadeData);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(SCHEMA),
   });
 
   const handleNext = (data) => {
-    console.log(data);
+    setFacadeData(facadeIndex, data);
     nextStep();
   };
 
@@ -93,30 +101,34 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
               <TextField
                 label="Width"
                 {...register("width")}
-                error={errors.width && ERRORS.width}
+                error={errors.width}
               />
               <TextField
                 label="Height"
                 {...register("height")}
-                error={errors.height && ERRORS.height}
+                error={errors.height}
               />
               <TextField
                 label="Tilt"
                 {...register("tilt")}
-                error={errors.tilt && ERRORS.tilt}
+                error={errors.tilt}
               />
               <TextField
                 label="Azimuth"
                 {...register("azimuth")}
-                error={errors.azimuth && ERRORS.azimuth}
+                error={errors.azimuth}
               />
-              <Select
-                value={data?.material || DEFAULT_MATERIAL_FACADE}
-                options={MATERIAL_OPTIONS}
-                label="Material"
-                onChange={(value) =>
-                  setFacadeData(facadeIndex, { material: value })
-                }
+              <Controller
+                render={({ field }) => (
+                  <Select
+                    options={MATERIAL_OPTIONS}
+                    label="Material"
+                    {...field}
+                  />
+                )}
+                control={control}
+                name="material"
+                defaultValue={DEFAULT_MATERIAL_FACADE}
               />
             </Stack>
             <FlexRow>

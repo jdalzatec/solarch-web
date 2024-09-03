@@ -16,7 +16,7 @@ const TextField = React.forwardRef((props, ref) => {
       slotProps={{
         input: {
           endAdornment: !!props.error && (
-            <Tooltip title={props.error}>
+            <Tooltip title={props.error && props.error.message}>
               <InfoIcon color="error" />
             </Tooltip>
           ),

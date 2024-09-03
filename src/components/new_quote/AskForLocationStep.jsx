@@ -6,6 +6,15 @@ import FlexColumn from "../layout/FlexColumn.jsx";
 import TextField from "../TextField.jsx";
 import { useForm } from "react-hook-form";
 import StepLabel from "./StepLabel.jsx";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const SCHEMA = yup
+  .object({
+    city: yup.string().required("City is required"),
+    country: yup.string().required("Country is required"),
+  })
+  .required();
 
 const AskForLocationStep = ({ ...props }) => {
   const stepLabel = "Location";
@@ -23,6 +32,7 @@ const AskForLocationStep = ({ ...props }) => {
     formState: { errors },
   } = useForm({
     defaultValues: { city, country },
+    resolver: yupResolver(SCHEMA),
   });
 
   const handleNext = (data) => {
@@ -51,16 +61,12 @@ const AskForLocationStep = ({ ...props }) => {
             >
               <TextField
                 label="City"
-                {...register("city", {
-                  required: "City is required",
-                })}
+                {...register("city")}
                 error={errors.city}
               />
               <TextField
                 label="Country"
-                {...register("country", {
-                  required: "Country is required",
-                })}
+                {...register("country")}
                 error={errors.country}
               />
             </Stack>

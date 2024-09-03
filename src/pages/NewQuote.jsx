@@ -14,8 +14,15 @@ const NewQuote = () => {
   const activeStep = useNewQuoteStore((state) => state.activeStep);
   const numberOfFacades = useNewQuoteStore((state) => state.numberOfFacades);
   const numberOfRoofs = useNewQuoteStore((state) => state.numberOfRoofs);
-  const getLastStepIndex = useNewQuoteStore((state) => state.getLastStepIndex);
   const reset = useNewQuoteStore((state) => state.reset);
+  const getLastStepIndex = useNewQuoteStore((state) => state.getLastStepIndex);
+
+  const getData = useNewQuoteStore((state) => state.getData);
+
+  const handleRun = () => {
+    const data = getData();
+    console.log(data);
+  };
 
   return (
     <Layout title="New project">
@@ -34,7 +41,7 @@ const NewQuote = () => {
         <Stack spacing={3}>
           <Typography>All steps completed - you&apos;re finished</Typography>
           <FlexRow>
-            <PrimaryButton onClick={reset}>Run</PrimaryButton>
+            <PrimaryButton onClick={handleRun}>Run</PrimaryButton>
             <SecondaryButton onClick={reset}>Reset</SecondaryButton>
           </FlexRow>
         </Stack>
