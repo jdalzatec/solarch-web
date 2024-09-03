@@ -10,20 +10,11 @@ import Select from "../Select.jsx";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
+import { humanize } from "../../utils/stringUtils.js";
 
-const MATERIAL_OPTIONS = [
-  {
-    label: "Standard",
-    value: "standard",
-  },
-  {
-    label: "Thin Film",
-    value: "thin_film",
-  },
-];
+const MATERIALS = ["standard", "thin_film"];
 
-const DEFAULT_MATERIAL_FACADE = MATERIAL_OPTIONS[0].value;
+const DEFAULT_MATERIAL = MATERIALS[0];
 
 const SCHEMA = yup
   .object({
@@ -123,14 +114,17 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
               <Controller
                 render={({ field }) => (
                   <Select
-                    options={MATERIAL_OPTIONS}
+                    options={MATERIALS.map((material) => ({
+                      value: material,
+                      label: humanize(material),
+                    }))}
                     label="Material"
                     {...field}
                   />
                 )}
                 control={control}
                 name="material"
-                defaultValue={DEFAULT_MATERIAL_FACADE}
+                defaultValue={DEFAULT_MATERIAL}
               />
             </Stack>
             <FlexRow>

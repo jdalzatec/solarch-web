@@ -5,15 +5,21 @@ export const theme = createTheme({
     mode: "light",
     primary: {
       main: "#fee140",
+      light: "#FEEF9A",
     },
     secondary: {
       main: "#fa709a",
+      light: "#FDC4D5",
     },
     background: {
       default: "#fafafa",
     },
     text: {
       primary: "#222",
+    },
+    success: {
+      main: "#2ed573",
+      light: "#AAEEC6",
     },
     divider: "#ebebeb",
   },

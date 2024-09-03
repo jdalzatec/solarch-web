@@ -14,6 +14,12 @@ const useNewQuoteStore = create((set, get) => {
         country,
       });
     },
+    typeOfBuilding: "",
+    setTypeOfBuilding: (typeOfBuilding) => {
+      set({
+        typeOfBuilding,
+      });
+    },
     activeStep: 0,
     setActiveStep: (activeStep) => {
       set({
@@ -57,6 +63,7 @@ const useNewQuoteStore = create((set, get) => {
       return {
         city: get().city,
         country: get().country,
+        typeOfBuilding: get().typeOfBuilding,
         facades: Object.values(get().facadesData),
         roofs: Object.values(get().roofsData),
       };

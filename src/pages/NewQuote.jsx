@@ -9,7 +9,6 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import PrimaryButton from "../components/PrimaryButton.jsx";
@@ -19,8 +18,6 @@ import AskForFacadeInfo from "../components/new_quote/AskForFacadeInfo.jsx";
 import AskForLocationStep from "../components/new_quote/AskForLocationStep.jsx";
 import AskForNumOfRoofsStep from "../components/new_quote/AskForNumOfRoofsStep.jsx";
 import AskForRoofInfo from "../components/new_quote/AskForRoofInfo.jsx";
-import SecondaryButton from "../components/SecondaryButton.jsx";
-import FlexRow from "../components/layout/FlexRow.jsx";
 
 const NewQuote = () => {
   const activeStep = useNewQuoteStore((state) => state.activeStep);
@@ -28,7 +25,6 @@ const NewQuote = () => {
 
   const numberOfFacades = useNewQuoteStore((state) => state.numberOfFacades);
   const numberOfRoofs = useNewQuoteStore((state) => state.numberOfRoofs);
-  const reset = useNewQuoteStore((state) => state.reset);
   const getLastStepIndex = useNewQuoteStore((state) => state.getLastStepIndex);
 
   const getData = useNewQuoteStore((state) => state.getData);
@@ -38,8 +34,10 @@ const NewQuote = () => {
     console.log(data);
   };
 
+  const links = [{ text: "Back", link: "/", action: "secondary" }];
+
   return (
-    <Layout title="New project" back="/">
+    <Layout title="New project" links={links}>
       <Stepper activeStep={activeStep} orientation="vertical">
         <AskForLocationStep />
         <AskForNumOfFacadesStep />

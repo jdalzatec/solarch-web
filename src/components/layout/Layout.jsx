@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Header from "../Header.jsx";
 
-const Layout = ({ title, back = null, children }) => {
+const Layout = ({ title, links = null, children }) => {
   return (
     <Stack
       direction="column"
@@ -12,7 +12,7 @@ const Layout = ({ title, back = null, children }) => {
         mt: 3,
       }}
     >
-      <Header title={title} back={back} />
+      <Header title={title} links={links} />
       {children}
     </Stack>
   );

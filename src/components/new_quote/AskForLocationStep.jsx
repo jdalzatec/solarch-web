@@ -4,11 +4,15 @@ import FlexRow from "../layout/FlexRow.jsx";
 import PrimaryButton from "../PrimaryButton.jsx";
 import FlexColumn from "../layout/FlexColumn.jsx";
 import TextField from "../TextField.jsx";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import StepLabel from "./StepLabel.jsx";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
+import Select from "../Select.jsx";
+import { humanize } from "../../utils/stringUtils.js";
+
+const TYPE_OF_BUILDING = ["commercial", "residential", "industrial"];
+const DEFAULT_TYPE_OF_BUILDING = TYPE_OF_BUILDING[0];
 
 const SCHEMA = yup
   .object({
@@ -21,29 +25,27 @@ const AskForLocationStep = ({ ...props }) => {
   const stepLabel = "Location";
   const stepDescription = `Enter the location of the project.`;
 
-  const city = useNewQuoteStore((state) => state.city);
-  const country = useNewQuoteStore((state) => state.country);
   const setCity = useNewQuoteStore((state) => state.setCity);
   const setCountry = useNewQuoteStore((state) => state.setCountry);
+  const setTypeOfBuilding = useNewQuoteStore(
+    (state) => state.setTypeOfBuilding,
+  );
   const nextStep = useNewQuoteStore((state) => state.nextStep);
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-    reset,
   } = useForm({
-    defaultValues: { city, country },
     resolver: yupResolver(SCHEMA),
   });
-
-  useEffect(() => {
-    reset({ city, country });
-  }, [city, country, reset]);
 
   const handleNext = (data) => {
     setCity(data.city);
     setCountry(data.country);
+    setTypeOfBuilding(data.type);
+    console.log(data);
     nextStep();
   };
 
@@ -75,6 +77,21 @@ const AskForLocationStep = ({ ...props }) => {
                 label="Country"
                 {...register("country")}
                 error={errors.country}
+              />
+              <Controller
+                render={({ field }) => (
+                  <Select
+                    options={TYPE_OF_BUILDING.map((typeOfBuilding) => ({
+                      value: typeOfBuilding,
+                      label: humanize(typeOfBuilding),
+                    }))}
+                    label="Type"
+                    {...field}
+                  />
+                )}
+                control={control}
+                name="type"
+                defaultValue={DEFAULT_TYPE_OF_BUILDING}
               />
             </Stack>
             <FlexRow>
