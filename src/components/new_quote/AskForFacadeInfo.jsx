@@ -91,23 +91,23 @@ const AskForFacadeInfo = ({ facadeIndex, ...props }) => {
               }}
             >
               <TextField
-                label="Width"
+                label="Width [m]"
                 {...register("width")}
                 error={errors.width}
                 autoFocus
               />
               <TextField
-                label="Height"
+                label="Height [m]"
                 {...register("height")}
                 error={errors.height}
               />
               <TextField
-                label="Tilt"
+                label="Tilt [&deg;]"
                 {...register("tilt")}
                 error={errors.tilt}
               />
               <TextField
-                label="Azimuth"
+                label="Azimuth [&deg;]"
                 {...register("azimuth")}
                 error={errors.azimuth}
               />

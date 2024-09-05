@@ -27,9 +27,7 @@ const AskForLocationStep = ({ ...props }) => {
 
   const setCity = useNewQuoteStore((state) => state.setCity);
   const setCountry = useNewQuoteStore((state) => state.setCountry);
-  const setTypeOfBuilding = useNewQuoteStore(
-    (state) => state.setTypeOfBuilding,
-  );
+  const setType = useNewQuoteStore((state) => state.setType);
   const nextStep = useNewQuoteStore((state) => state.nextStep);
 
   const {
@@ -44,7 +42,7 @@ const AskForLocationStep = ({ ...props }) => {
   const handleNext = (data) => {
     setCity(data.city);
     setCountry(data.country);
-    setTypeOfBuilding(data.type);
+    setType(data.type);
     console.log(data);
     nextStep();
   };
@@ -81,9 +79,9 @@ const AskForLocationStep = ({ ...props }) => {
               <Controller
                 render={({ field }) => (
                   <Select
-                    options={TYPE_OF_BUILDING.map((typeOfBuilding) => ({
-                      value: typeOfBuilding,
-                      label: humanize(typeOfBuilding),
+                    options={TYPE_OF_BUILDING.map((type) => ({
+                      value: type,
+                      label: humanize(type),
                     }))}
                     label="Type"
                     {...field}

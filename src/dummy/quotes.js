@@ -6,48 +6,53 @@ export const QUOTES = [
       city: "New York",
       country: "USA",
       type: "residential",
-      number_of_facades: 4,
       facades: [
         { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
-        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
-        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
+        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "thin_film" },
+        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "thin_film" },
         { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
       ],
-      number_of_roofs: 1,
-      roofs: [{ width: 10, height: 20 }],
+      roofs: [{ width: 10, height: 20, material: "standard" }],
     },
     simulation: {
       location: {
         latitude: 40.7128,
         longitude: -74.006,
       },
+      pricing: {
+        materials: {
+          standard: 100,
+          thin_film: 200,
+        },
+        kwh: 0.1,
+      },
       facades: [
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          efficiency: 1987,
+          pricing: 100,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          efficiency: 1987,
+          pricing: 102,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          efficiency: 1987,
+          pricing: 104,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          efficiency: 1987,
+          pricing: 106,
         },
       ],
       roofs: [
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          efficiency: 1987,
+          pricing: 108,
         },
       ],
     },
@@ -59,15 +64,20 @@ export const QUOTES = [
       city: "New York",
       country: "USA",
       type: "commercial",
-      number_of_facades: 4,
       facades: [
         { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
+        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "thin_film" },
         { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
-        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
-        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "standard" },
+        { width: 10, height: 20, tilt: 0, azimuth: 0, material: "thin_film" },
       ],
-      number_of_roofs: 1,
-      roofs: [{ width: 10, height: 20 }],
+      roofs: [{ width: 10, height: 20, material: "standard" }],
+    },
+    pricing: {
+      materials: {
+        standard: 100,
+        thin_film: 200,
+      },
+      kwh: 0.1,
     },
     simulation: {
       location: {
@@ -77,30 +87,30 @@ export const QUOTES = [
       facades: [
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          pricing: 100,
+          efficiency: 1987,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          pricing: 100,
+          efficiency: 1987,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          pricing: 100,
+          efficiency: 1987,
         },
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          pricing: 100,
+          efficiency: 1987,
         },
       ],
       roofs: [
         {
           number_of_panels: 4,
-          price_per_panel: 100,
-          efficiency: 987,
+          pricing: 100,
+          efficiency: 1987,
         },
       ],
     },

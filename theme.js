@@ -81,7 +81,7 @@ export const theme = createTheme({
     MuiTableRow: {
       styleOverrides: {
         root: {
-          "&:last-child td, &:last-child th": {
+          "&:last-child td, th": {
             borderColor: "#222",
           },
         },

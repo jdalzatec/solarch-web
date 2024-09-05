@@ -72,13 +72,13 @@ const AskForRoofInfo = ({ roofIndex, ...props }) => {
               }}
             >
               <TextField
-                label="Width"
+                label="Width [m]"
                 {...register("width")}
                 error={errors.width}
                 autoFocus
               />
               <TextField
-                label="Height"
+                label="Height [m]"
                 {...register("height")}
                 error={errors.height}
               />

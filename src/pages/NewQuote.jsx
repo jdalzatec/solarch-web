@@ -18,6 +18,8 @@ import AskForFacadeInfo from "../components/new_quote/AskForFacadeInfo.jsx";
 import AskForLocationStep from "../components/new_quote/AskForLocationStep.jsx";
 import AskForNumOfRoofsStep from "../components/new_quote/AskForNumOfRoofsStep.jsx";
 import AskForRoofInfo from "../components/new_quote/AskForRoofInfo.jsx";
+import { humanize } from "../utils/stringUtils.js";
+import QuoteData from "../components/quotes/QuoteData.jsx";
 
 const NewQuote = () => {
   const activeStep = useNewQuoteStore((state) => state.activeStep);
@@ -54,136 +56,16 @@ const NewQuote = () => {
 
       {activeStep === getLastStepIndex() + 1 && (
         <Box>
-          <Typography variant="h6">Review Data</Typography>
-
-          <Stack
-            spacing={5}
-            sx={{
-              mb: 10,
+          <QuoteData
+            data={getData()}
+            actions={{
+              location: () => setActiveStep(0),
+              facade: (index) => setActiveStep(2 + index),
+              roof: (index) => setActiveStep(2 + numberOfFacades + 1 + index),
             }}
-          >
-            <Box
-              sx={{
-                overflowX: "auto",
-              }}
-            >
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell>City</TableCell>
-                    <TableCell>Country</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow
-                    hover={true}
-                    sx={{
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                    onClick={() => {
-                      setActiveStep(0);
-                    }}
-                    title="Click to edit"
-                  >
-                    <TableCell>Location</TableCell>
-                    <TableCell>{getData().city}</TableCell>
-                    <TableCell>{getData().country}</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Box>
+          />
 
-            <Divider />
-
-            <Box
-              sx={{
-                overflowX: "auto",
-              }}
-            >
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Facade Index</TableCell>
-                    <TableCell>Width [m]</TableCell>
-                    <TableCell>Height [m]</TableCell>
-                    <TableCell>Tilt [degrees]</TableCell>
-                    <TableCell>Azimuth [degrees]</TableCell>
-                    <TableCell>Material</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {Object.entries(getData().facades).map(([key, value]) => (
-                    <TableRow
-                      key={key}
-                      hover={true}
-                      sx={{
-                        "&:hover": {
-                          cursor: "pointer",
-                        },
-                      }}
-                      onClick={() => {
-                        setActiveStep(2 + parseInt(key));
-                      }}
-                      title="Click to edit"
-                    >
-                      <TableCell>{parseInt(key) + 1}</TableCell>
-                      <TableCell>{value.width}</TableCell>
-                      <TableCell>{value.height}</TableCell>
-                      <TableCell>{value.tilt}</TableCell>
-                      <TableCell>{value.azimuth}</TableCell>
-                      <TableCell>{value.material}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-
-            <Divider />
-
-            <Box
-              sx={{
-                overflowX: "auto",
-              }}
-            >
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Roof Index</TableCell>
-                    <TableCell>Width [m]</TableCell>
-                    <TableCell>Height [m]</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {Object.entries(getData().roofs).map(([key, value]) => (
-                    <TableRow
-                      key={key}
-                      hover={true}
-                      sx={{
-                        "&:hover": {
-                          cursor: "pointer",
-                        },
-                      }}
-                      onClick={() => {
-                        setActiveStep(2 + numberOfFacades + 1 + parseInt(key));
-                      }}
-                      title="Click to edit"
-                    >
-                      <TableCell>{parseInt(key) + 1}</TableCell>
-                      <TableCell>{value.width}</TableCell>
-                      <TableCell>{value.height}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-            <Divider />
-            <PrimaryButton onClick={handleRun}>Run</PrimaryButton>
-
-            <Divider />
-          </Stack>
+          <PrimaryButton onClick={handleRun}>Run</PrimaryButton>
         </Box>
       )}
     </Layout>

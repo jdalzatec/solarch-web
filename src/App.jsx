@@ -9,6 +9,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "../theme.js";
 import NewQuote from "./pages/NewQuote.jsx";
 import Home from "./pages/Home.jsx";
+import Quote from "./pages/Quote.jsx";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
 
           <Route path="/" element={<Home />} />
-          <Route path="/new-quote" element={<NewQuote />} />
+          <Route path="/quotes/new" element={<NewQuote />} />
+          <Route path="/quotes/:quoteId" element={<Quote />} />
 
           <Route path="/404" element={<ErrorPage />} />
           <Route path="*" element={<ErrorPage />} />
