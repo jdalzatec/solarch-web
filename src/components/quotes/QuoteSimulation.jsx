@@ -52,6 +52,17 @@ const QuoteSimulation = ({ quote }) => {
         <li>Longitude: {quote.simulation.location.longitude}</li>
       </ul>
 
+      <iframe
+        style={{ border: 0, width: "100%", height: "450px" }}
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
+        src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+              &q=${quote.simulation.location.latitude},${quote.simulation.location.longitude}
+              &zoom=13
+              &language=en`}
+      ></iframe>
+
       <Typography>
         The simulation is based on the following pricing and materials:
       </Typography>

@@ -16,8 +16,8 @@ export const QUOTES = [
     },
     simulation: {
       location: {
-        latitude: 40.7128,
-        longitude: -74.006,
+        latitude: 5.05,
+        longitude: -75.5,
       },
       pricing: {
         materials: {
@@ -72,17 +72,18 @@ export const QUOTES = [
       ],
       roofs: [{ width: 10, height: 20, material: "standard" }],
     },
-    pricing: {
-      materials: {
-        standard: 100,
-        thin_film: 200,
-      },
-      kwh: 0.1,
-    },
+
     simulation: {
+      pricing: {
+        materials: {
+          standard: 100,
+          thin_film: 200,
+        },
+        kwh: 0.1,
+      },
       location: {
-        latitude: 40.7128,
-        longitude: -74.006,
+        latitude: 5.05,
+        longitude: -75.5,
       },
       facades: [
         {
